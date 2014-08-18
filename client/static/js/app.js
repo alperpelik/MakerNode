@@ -40,7 +40,7 @@ makernode.routes = {
     },
     next_steps: {
         hash: 'home',
-        controller: 'EmptyCtrl',
+        controller: 'HomeCtrl',
         template: 'next_steps',
     },
     controller: {
@@ -169,6 +169,10 @@ makernode.app.controller('InitCtrl', ['$scope', function($scope) {
     });
     // ask what mode we are in
     $scope.ws.emit('mode', {});
+}]);
+
+makernode.app.controller('HomeCtrl', ['$scope', function($scope) {
+    $scope.hostname = window.location.hostname;
 }]);
 
 makernode.app.directive('stepsPics', function($document) {
