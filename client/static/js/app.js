@@ -38,10 +38,10 @@ makernode.routes = {
         controller: 'FormCtrl',
         template: 'test_pin',
     },
-    next_steps: {
+    home: {
         hash: 'home',
         controller: 'EmptyCtrl',
-        template: 'next_steps',
+        template: 'home',
     },
     controller: {
         hash: 'pin_monitor',
@@ -164,9 +164,11 @@ makernode.app.controller('InitCtrl', ['$scope', function($scope) {
     // go to the appropriate page
     $scope.ws.on('mode', function(mode) {
         if (mode === 'setup') {
-            makernode.rc.goTo(makernode.routes.set_hostname);
+            var route_key = makernode.setup_steps[0];
+            var route = makernode.routes[route_key];
+            makernode.rc.goTo(route);
         } else {
-            makernode.rc.goTo(makernode.routes.test_pin);
+            makernode.rc.goTo(makernode.routes.home);
         }
     });
     // ask what mode we are in
