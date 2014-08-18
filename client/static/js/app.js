@@ -61,10 +61,8 @@ makernode.app.config(['$routeProvider', function($routeProvider) {
 
 // steps order
 makernode.setup_steps = [
-    'set_hostname',
     'wifi_setup',
     'connecting',
-    'test_pin',
     'next_steps',
 ];
 
@@ -164,9 +162,9 @@ makernode.app.controller('InitCtrl', ['$scope', function($scope) {
     // go to the appropriate page
     $scope.ws.on('mode', function(mode) {
         if (mode === 'setup') {
-            makernode.rc.goTo(makernode.routes.set_hostname);
+            makernode.rc.goTo(makernode.routes.wifi_setup);
         } else {
-            makernode.rc.goTo(makernode.routes.test_pin);
+            makernode.rc.goTo(makernode.routes.next_steps);
         }
     });
     // ask what mode we are in
