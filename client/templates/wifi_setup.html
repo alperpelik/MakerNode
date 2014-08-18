@@ -12,14 +12,29 @@
         </div>
     </div>
 
-    <div class="row padded">
+    <div class="row padded"
+      ng-if="client_os !== 'Mac'">
         <!--TODO detect user's operating system and only show what they need to know -->
-        <div class="col-xs-12 alert alert-warning" role="alert">
-            <p>
-                <strong>Windows</strong> users will need to download <a href="http://download.cnet.com/Bonjour-for-Windows/3000-18507_4-93550.html">Bonjour.</a>
+        <div class="col-xs-12 alert alert-warning"
+          role="alert"
+          ng-switch="client_os">
+            <p ng-switch-when="Win">
+                <strong>Windows</strong> users will need to make sure they have <a href="http://download.cnet.com/Bonjour-for-Windows/3000-18507_4-93550.html">Bonjour</a> before proceeding.
             </p>
-            <p>
-                <strong>*nix</strong> users will need to download Zeroconf, aka Bonjour, or some other mDNS service. Essentially they must be able to ping <hostname>.local addresses. More information <a href="https://help.ubuntu.com/community/HowToZeroconf">here</a>.
+            <p ng-switch-when="*nix">
+                <strong>*nix</strong> users will need to make sure they have mDNS before proceeding. Essentially they must be able to ping &lt;hostname&gt;.local addresses. See:
+                <a href="http://en.wikipedia.org/wiki/Zero-configuration_networking">
+                    wikipedia introduction
+                </a>,
+                <a href="http://avahi.org/">
+                    Avahi
+                </a>,
+                <a href="http://www.zeroconf.org/">
+                    Zeroconf
+                </a>.
+            </p>
+            <p ng-switch-default>
+                <strong>Check</strong> to make sure your OS has mDNS before proceeding.
             </p>
         </div>
     </div>

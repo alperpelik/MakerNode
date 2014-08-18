@@ -73,6 +73,8 @@ makernode.app.controller('AppCtrl', ['$scope', function($scope) {
 
     $scope.routes = makernode.routes;
 
+    $scope.client_os = makernode.get_client_os();
+
     // pins data structure
     $scope.d = makernode.d();
     // websocket connection with server
@@ -402,3 +404,13 @@ makernode.rc = function routing_utility_functions() {
     return that;
 }();
 
+makernode.get_client_os = function() {
+    var ua = navigator.userAgent;
+    if (/Mac/.test(ua))
+        return 'Mac';
+    if (/Win/.test(ua))
+        return 'Win';
+    if (/X11/.test(ua) || /Linux/.test(ua))
+        return '*nix';
+    return null;
+};
