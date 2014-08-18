@@ -13,6 +13,18 @@
     </div>
 
     <div class="row padded">
+        <!--TODO detect user's operating system and only show what they need to know -->
+        <div class="col-xs-12 alert alert-warning" role="alert">
+            <p>
+                <strong>Windows</strong> users will need to download <a href="http://download.cnet.com/Bonjour-for-Windows/3000-18507_4-93550.html">Bonjour.</a>
+            </p>
+            <p>
+                <strong>*nix</strong> users will need to download Zeroconf, aka Bonjour, or some other mDNS service. Essentially they must be able to ping <hostname>.local addresses. More information <a href="https://help.ubuntu.com/community/HowToZeroconf">here</a>.
+            </p>
+        </div>
+    </div>
+
+    <div class="row padded">
         <div class="col-xs-12">
             <input ng-model="form.ssid"
               placeholder="Network">
